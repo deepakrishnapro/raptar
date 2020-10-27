@@ -1,6 +1,6 @@
 from datetime import datetime
 from raptar.data_service.serializers.testcase_serializer import TestCaseSerializer
-from raptar.data_service.serializers.testreport_serializer import TestReportSerializer
+from raptar.data_service.serializers.errordetails_serializer import ErrorDetailsSerializer
 import logging
 from raptar.data_service.models.pipeline import Pipeline
 from raptar.data_service.models.testcase import TestCase
@@ -19,6 +19,15 @@ class FinishTestCaseHandler:
                 "duration": testcaserequest['duration'],
                 "result": testcaserequest['result']
             }
+
+            if "errorstatus" in testcaserequest:
+                error_data = {
+                    "testid":testinstance,
+                    "errormessage": testcaserequest['errormessage'],
+                    "errorstatus": testcaserequest['errorstatus']
+                }
+                errordata_serializer = ErrorDetailsSerializer()
+                errordata_serializer.create(error_data)
 
             testcase_serializer = TestCaseSerializer()
             testinstance = testcase_serializer.update(testinstance, test_data)
