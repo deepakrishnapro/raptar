@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
 from raptar.data_service.view.startpipeline_view import StartPipelineView
 from raptar.data_service.view.startpipeline_view import StartPipelineRUDView
 from raptar.data_service.view.testsuite_view import TestSuiteView
@@ -27,5 +27,6 @@ urlpatterns = [
     path('pipeline/finish', StartPipelineRUDView.as_view()),
     path('testsuite/add', TestSuiteView.as_view()),
     path('testcase/start', StartTestCaseView.as_view()),
-    path('testcase/finish', TestCaseRUDView.as_view())
+    path('testcase/finish', TestCaseRUDView.as_view()),
+    re_path(r'^dbr/', include('django_business_rules.urls', namespace='django_business_rules'))
 ]
