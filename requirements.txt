@@ -1,0 +1,5 @@
+Django==2.2.11
+djangorestframework==3.9.2
+django-rest-swagger==2.2.0
+mysqlclient==1.4.6
+django-business-rules==1.0.5
