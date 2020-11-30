@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'raptar.data_service',
     'raptar.rule_engine',
+    'django_business_rules',
 ]
 
 MIDDLEWARE = [
