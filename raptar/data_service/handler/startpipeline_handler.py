@@ -21,7 +21,7 @@ class StartPipelineHandler:
         logger.info("Project instance is newly create : {} ".format(exists))
         logger.info("Project-ID is : {}".format(projectinstance.projectid))
 
-        datetime_time = datetime.fromtimestamp(pipelinerequest['starttime'])
+        datetime_time = datetime.fromtimestamp(pipelinerequest['starttime']/1000)
 
         logger.info("datetime_time is : {}".format(datetime_time))
         pipeline_data = {
