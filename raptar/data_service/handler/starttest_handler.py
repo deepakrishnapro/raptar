@@ -15,7 +15,7 @@ class StartTestCaseHandler:
         testsuiteinstance = TestSuite.objects.get(testsuiteid=testcaserequest['testsuiteid'])
         logger.debug("Test suite instance is exits and its  Id : {} ".format(testsuiteinstance.testsuiteid))
 
-        datetime_time = datetime.fromtimestamp(testcaserequest['starttime'])
+        datetime_time = datetime.fromtimestamp(testcaserequest['starttime']/1000)
 
         logger.info("datetime_time is : {}".format(datetime_time))
         testcase_data = {
