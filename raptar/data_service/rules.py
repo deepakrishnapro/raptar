@@ -22,9 +22,9 @@ class ProductActions(BaseActions):
     def __init__(self, product):
         self.product = product
 
-    @rule_action(params={"new_version": FIELD_NUMERIC})
-    def put_on_sale(self, new_version):
-        self.product.productversion = new_version
+    @rule_action(params={"email_id": FIELD_NUMERIC})
+    def send_email(self, email_id):
+        self.product.productversion = email_id
         self.product.save()
 
 class ProductBusinessRule(BusinessRule):
