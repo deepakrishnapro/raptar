@@ -21,7 +21,8 @@ class StartPipelineHandler:
         logger.info("Project instance is newly create : {} ".format(exists))
         logger.info("Project-ID is : {}".format(projectinstance.projectid))
 
-        datetime_time = datetime.fromtimestamp(pipelinerequest['starttime'])
+
+        datetime_time = datetime.fromtimestamp(pipelinerequest['starttime']/1000)
 
         logger.info("datetime_time is : {}".format(datetime_time))
         pipeline_data = {
@@ -34,6 +35,7 @@ class StartPipelineHandler:
 
         pipeline_serializer = PipelineSerializer()
         pipelineinstance = pipeline_serializer.create(pipeline_data)
+        logger.info("pipeline id created : {} ".format(pipelineinstance.pipelineid))
 
         return pipelineinstance.pipelineid
 

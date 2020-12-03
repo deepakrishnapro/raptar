@@ -14,8 +14,9 @@ class FinishPipelineHandler:
         try:
             pipelineinstance = Pipeline.objects.get(pipelineid=pipelinerequest['pipelineid'])
             logger.info("Pipeline instance is exits Pipeline Id : {} ".format(pipelineinstance.pipelineid))
-            datetime_time = datetime.fromtimestamp(pipelinerequest['endtime'])
+            datetime_time = datetime.fromtimestamp(pipelinerequest['endtime']/1000)
             logger.debug("end datetime_time is : {}".format(datetime_time))
+            passpercent = (pipelinerequest['testcasepassed']/pipelinerequest['totaltestcase'] * 100)
 
             pipeline_data = {
                 "endtime": datetime_time,
@@ -27,7 +28,7 @@ class FinishPipelineHandler:
                 "testcasepassed": pipelinerequest['testcasepassed'],
                 "testcasefailed": pipelinerequest['testcasefailed'],
                 "testcaseskipped": pipelinerequest['testcaseskipped'],
-                "passpercent": pipelinerequest['passpercent'],
+                "passpercent": passpercent,
                 "pipelineid": pipelineinstance
             }
             pipeline_serializer = PipelineSerializer()
