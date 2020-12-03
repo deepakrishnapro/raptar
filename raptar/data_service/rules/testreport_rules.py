@@ -7,6 +7,7 @@ from django_business_rules.business_rule import BusinessRule
 from raptar.data_service.utils import sendmail
 from raptar.data_service.models.pipeline import Pipeline
 from raptar.data_service.models.project import Project
+import logging
 
 class TestReportVariables(BaseVariables):
 
@@ -25,6 +26,7 @@ class TestReportActions(BaseActions):
 
     @rule_action(params={"email_id": FIELD_TEXT})
     def send_email_pass_percentage(self, email_id):
+        logging.info("Action Triggered - executing send email to {}".format(email_id))
         pipelineid = self.testreport.pipelineid
         pipelineobj = Pipeline.objects.get(pipelineid=pipelineid)
         projectobj = Project.objects.get(projectid=pipelineobj.projectid)
