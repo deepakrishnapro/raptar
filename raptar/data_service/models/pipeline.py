@@ -10,7 +10,7 @@ class Pipeline(models.Model):
     starttime = models.DateTimeField()
     endtime = models.DateTimeField(null=True)
     duration =models.IntegerField(help_text='Time in Seconds',null=True)
-    result =models.CharField(max_length=10,null=True)
+    result =models.CharField(max_length=50,null=True)
     projectid = models.ForeignKey(Project, on_delete=models.PROTECT)
 
     def __str__(self):

@@ -38,11 +38,10 @@ class TestCaseRUDView(generics.RetrieveUpdateDestroyAPIView):
                     data=testid,
                     status=status.HTTP_200_OK
                 )
-            else :
-                return Response(
-                    data=testid,
-                    status=status.HTTP_400_BAD_REQUEST
-                )
+            return Response(
+                data=testid,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
         except Exception as ex:
             logger.error("Exception while update operation in Finish Testcase View : {}".format(ex))
