@@ -7,7 +7,7 @@ class Project(models.Model):
     projectname = models.CharField(max_length=250)
     projectowner = models.CharField(max_length=250)
     repositoryurl = models.CharField(max_length=250)
-    environment = models.CharField(max_length=250)
+    environment = models.CharField(max_length=250,default='Dev')
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
 
     def __str__(self):
