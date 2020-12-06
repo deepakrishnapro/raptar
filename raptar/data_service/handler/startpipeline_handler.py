@@ -17,6 +17,7 @@ class StartPipelineHandler:
         projectinstance, exists = Project.objects.get_or_create(projectname=pipelinerequest['projectname'],
                                                                 defaults={'projectowner': pipelinerequest['projectowner'],
                                                                           'repositoryurl': pipelinerequest['repositoryurl'],
+                                                                          'environment': pipelinerequest['environment'],
                                                                            'product':productinstance})
         logger.info("Project instance is newly create : {} ".format(exists))
         logger.info("Project-ID is : {}".format(projectinstance.projectid))
