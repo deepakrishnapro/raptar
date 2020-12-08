@@ -36,7 +36,7 @@ class TestReportActions(BaseActions):
         to_addr_list = []
         to_addr_list.append(email_id)
         #sendmail(subject,body,to_addr_list)
-        logging.info("Datetime - email sent at : ".format(datetime.datetime.now()))
+        logging.info("Datetime - email sent at : {}".format(datetime.datetime.now()))
 
 
 class TestReportBusinessRule(BusinessRule):

@@ -33,7 +33,7 @@ class FinishPipelineHandler:
             }
             pipeline_serializer = PipelineSerializer()
             pipelineinstance = pipeline_serializer.update(pipelineinstance, pipeline_data)
-            logging.info("Datetime persists : ".format(datetime.now()))
+            logging.info("Datetime persists : {}".format(datetime.now()))
             testreport_serializer = TestReportSerializer()
             testreport_serializer.create(testreport_data)
 
