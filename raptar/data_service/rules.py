@@ -27,18 +27,17 @@ class TestReportActions(BaseActions):
     @rule_action(params={"email_id": FIELD_TEXT})
     def send_email_pass_percentage(self, email_id):
         logging.info("Action Triggered - executing send email to {}".format(email_id))
-        pipelineid = self.testreport.pipelineid
-        pipelineobj = Pipeline.objects.get(pipelineid=pipelineid)
-        projectobj = Project.objects.get(projectid=pipelineobj.projectid)
+        #pipelineid = self.testreport.pipelineid
+        #pipelineobj = Pipeline.objects.get(pipelineid=pipelineid)
+        #projectobj = Project.objects.get(projectid=pipelineobj.projectid)
 
-        subject = 'Alert! Pass Percentage for pipeline : {}'.format(projectobj.projectname)
+        subject = 'Alert! Pass Percentage for pipeline : {}'.format("")
         body = ' *** This is an automated message triggered by the raptar rule engine ***' + \
-               '\n' + 'Pass Percentage for pipeline {} '.format(projectobj.projectname) + 'has been breached.' +\
+               '\n' + 'Pass Percentage for pipeline {} '.format("") + 'has been breached.' +\
                '\n' + 'Pass Percentage for the pipeline is at {}'.format(self.testreport.passpercent)
-        from_addr = 'deepaprojecttest@gmail.com'
         to_addr_list = []
         to_addr_list.append(email_id)
-        sendmail(subject,body,from_addr,to_addr_list)
+        sendmail(subject,body,to_addr_list)
 
 
 class TestReportBusinessRule(BusinessRule):
