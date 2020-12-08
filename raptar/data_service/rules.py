@@ -34,7 +34,7 @@ class TestReportActions(BaseActions):
                '\n' + 'Pass Percentage for the pipeline is at {}'.format(self.testreport.passpercent)
         to_addr_list = []
         to_addr_list.append(email_id)
-        sendmail(subject,body,to_addr_list)
+        #sendmail(subject,body,to_addr_list)
 
 
 class TestReportBusinessRule(BusinessRule):
