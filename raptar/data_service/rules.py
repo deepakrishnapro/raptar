@@ -8,6 +8,7 @@ from raptar.data_service.utils import sendmail
 from raptar.data_service.models.pipeline import Pipeline
 from raptar.data_service.models.project import Project
 import logging
+import datetime
 
 class TestReportVariables(BaseVariables):
 
@@ -35,6 +36,7 @@ class TestReportActions(BaseActions):
         to_addr_list = []
         to_addr_list.append(email_id)
         #sendmail(subject,body,to_addr_list)
+        logging.info("Datetime - email sent at : ".format(datetime.datetime.now()))
 
 
 class TestReportBusinessRule(BusinessRule):

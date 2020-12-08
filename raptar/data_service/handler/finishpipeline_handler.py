@@ -4,6 +4,7 @@ from raptar.data_service.serializers.testreport_serializer import TestReportSeri
 import logging
 from raptar.data_service.models.pipeline import Pipeline
 from raptar.data_service.models.project import Project
+import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +34,7 @@ class FinishPipelineHandler:
             }
             pipeline_serializer = PipelineSerializer()
             pipelineinstance = pipeline_serializer.update(pipelineinstance, pipeline_data)
+            logging.info("Datetime persists : ".format(datetime.datetime.now()))
             testreport_serializer = TestReportSerializer()
             testreport_serializer.create(testreport_data)
 
