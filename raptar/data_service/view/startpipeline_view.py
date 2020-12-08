@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from raptar.data_service.handler.startpipeline_handler import StartPipelineHandler
 from raptar.data_service.handler.finishpipeline_handler import FinishPipelineHandler
 import logging
+import datetime
 
 class StartPipelineView(generics.CreateAPIView):
 
@@ -27,6 +28,7 @@ class StartPipelineRUDView(generics.RetrieveUpdateDestroyAPIView):
     def put(self, request):
         try:
             logging.info("Request received : {}".format(request.data))
+            logging.info("Datetime raptar receive: {}".format(datetime.datetime.now()))
             pipelineid = FinishPipelineHandler.handlefinishpipeline(request.data)
 
             if (pipelineid is not None):
